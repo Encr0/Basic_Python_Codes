@@ -6,7 +6,7 @@ def draw_square(some_turtle):
         some_turtle.right(90)
 #definimos
 def draw_art():
-    webos = Turtle(shape="turtle")
+    webos = Turtle(shape="turtle") #me disculpo por las definiciones, estaba aburrido 
     webos.color("red")
     webos.pensize(2)
     webos.speed(45)
@@ -14,7 +14,7 @@ def draw_art():
         draw_square(webos)
         webos.right(10)
     #otro mas para las lineas que entran
-    meci = Turtle(shape="turtle")
+    meci = Turtle(shape="turtle") # jajaja meci, me disculpo xdd
     meci.color("white")
     meci.pensize(2)
     meci.speed(50)
