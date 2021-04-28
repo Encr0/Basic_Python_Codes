@@ -9,7 +9,7 @@ GLASS_SHADOW = ''
 s = turtle.getscreen()
 t = turtle.Turtle()
 
-#s = turtle
+
 
 #Creamos el cuerpo
 def body():
