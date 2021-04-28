@@ -1,4 +1,4 @@
-#para ver de donde es el numero y que comprañia es, codigo simpre pero para algo servira 
+#para ver de donde es el numero y que comprañia es, codigo simple pero para algo servira 
 
 import phonenumbers
 from phonenumbers import geocoder
