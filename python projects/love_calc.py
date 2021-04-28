@@ -1,3 +1,6 @@
+#lo hice de broma 
+# no borrar love.png o si no no funciona el codigo o puedes descargar tu propia imagen y renombrarla love.png (tiene que ser png, no sirve con jpg o cosas asi)
+
 from tkinter import *
 from tkinter.messagebox import showinfo
 from PIL import Image,ImageTk
