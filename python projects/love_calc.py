@@ -7,12 +7,12 @@ from PIL import Image,ImageTk
 from random import randint
 
 root=Tk()
-root.title("cual es la probabilidad de que se chupen los webos")
+root.title("Calculador de amor xdd")
 root.geometry("360x360")
 
 def puto():
     number = randint(60,100)
-    showinfo("cuanto se aman los putos", f"la probabilidad de que se chupen los webos es de {number} %")
+    showinfo("cuanto se aman", f"se aman un {number} %")
 
 open_img=Image.open("love.png")
 render_img = ImageTk.PhotoImage(open_img)
@@ -33,7 +33,7 @@ label2.grid(row=2,column=0)
 entry2=Entry(root,font=("arial",10,"bold"))
 entry2.grid(row=2,column=1)
 
-button=Button(root,text="revisa si son geis xd !",bd=2,font=("arial",12,"bold"),command=puto,fg="red",bg="black")
+button=Button(root,text="revisa ahora !",bd=2,font=("arial",12,"bold"),command=puto,fg="red",bg="black")
 button.grid(row=3,columnspan=2)
 
 root.mainloop()
