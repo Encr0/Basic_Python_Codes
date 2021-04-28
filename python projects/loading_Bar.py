@@ -1,3 +1,5 @@
+# barra de carga muy simple 
+
 import time
 from tqdm import tqdm
 
