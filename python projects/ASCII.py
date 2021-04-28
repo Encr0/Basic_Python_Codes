@@ -1,6 +1,6 @@
 import pyfiglet
 
-result=pyfiglet.figlet_format('Loisked')
+result=pyfiglet.figlet_format('Your text here')
 
 print(result)
 
