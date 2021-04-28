@@ -1,2 +1,3 @@
 # Basic_Python_Codes
-yessir
+# stuff i maded when i was learning python
+# programas que hice cuando aprendia python
