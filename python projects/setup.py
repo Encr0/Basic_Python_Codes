@@ -15,9 +15,9 @@ options = {
 }
 
 setup(
-    name = "<Html_Code>",
-    options = options,
-    version = "0.1",
-    description = '<Get html structure from any site>',
-    executables = executables
+    name = "", #esto se cambia al nombre que tu le quieras poner 
+    options = options, #no tocar 
+    version = "0.1", #numero de version
+    description = '', #descripcion
+    executables = executables #no tocar 
 )
