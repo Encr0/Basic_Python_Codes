@@ -11,7 +11,7 @@ def otp_on_email(email_id):
     msg = MIMEMultipart()
     msg['From'] = fromaddr
     msg['To'] = toaddr
-    msg['Sunject'] = "OTP by Pablo (Encr0)"
+    msg['Subject'] = "OTP by Pablo (Encr0)"
 
     otp = random.randrange(100001, 999999)
     body = '''
