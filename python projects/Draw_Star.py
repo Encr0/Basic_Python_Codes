@@ -1,6 +1,6 @@
-import turtle
+import turtle #me quedo rara pero meh 
 
-t = turtle
+t = turtle 
 
 lenght=100
 size=400
