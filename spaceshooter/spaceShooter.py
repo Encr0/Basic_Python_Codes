@@ -5,12 +5,12 @@ import pygame
 import random
 from os import path
 
-## assets folder
+## assets folder, poner assets y sounds y este archivo en una misma carpeta*
 img_dir = path.join(path.dirname(__file__), 'assets')
 sound_folder = path.join(path.dirname(__file__), 'sounds')
 
 ###############################
-## to be placed in "constant.py" later
+## -- meh empezamos?
 WIDTH = 480
 HEIGHT = 600
 FPS = 60
@@ -18,7 +18,7 @@ POWERUP_TIME = 5000
 BAR_LENGTH = 100
 BAR_HEIGHT = 10
 
-# Define Colors 
+# definiendo colores
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 RED = (255, 0, 0)
@@ -28,13 +28,13 @@ YELLOW = (255, 255, 0)
 ###############################
 
 ###############################
-## to placed in "__init__.py" later
-## initialize pygame and create window
+## para ponerlo en "__init__.py" 
+## inicializar juego en una ventana 
 pygame.init()
 pygame.mixer.init()  ## For sound
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Space Shooter")
-clock = pygame.time.Clock()     ## For syncing the FPS
+clock = pygame.time.Clock()     ## FPS
 ###############################
 
 font_name = pygame.font.match_font('arial')
@@ -78,7 +78,7 @@ def main_menu():
 def draw_text(surf, text, size, x, y):
     ## guardar resultados
     font = pygame.font.Font(font_name, size)
-    text_surface = font.render(text, True, WHITE)       ## True denotes the font to be anti-aliased 
+    text_surface = font.render(text, True, WHITE)       ## --
     text_rect = text_surface.get_rect()
     text_rect.midtop = (x, y)
     surf.blit(text_surface, text_rect)
@@ -163,7 +163,7 @@ class Player(pygame.sprite.Sprite):
             self.power -= 1
             self.power_time = pygame.time.get_ticks()
 
-        ## unhide 
+        ## unhide / como es en español? 
         if self.hidden and pygame.time.get_ticks() - self.hide_timer > 1000:
             self.hidden = False
             self.rect.centerx = WIDTH / 2
@@ -341,18 +341,18 @@ class Missile(pygame.sprite.Sprite):
 
 
 ###################################################
-## Load all game images
+## cargar todas las imagenes/ o si no se ve weird dea
 
 background = pygame.image.load(path.join(img_dir, 'starfield.png')).convert()
 background_rect = background.get_rect()
-## ^^ draw this rect first 
+## ^^ -- 
 
 player_img = pygame.image.load(path.join(img_dir, 'playerShip1_orange.png')).convert()
 player_mini_img = pygame.transform.scale(player_img, (25, 19))
 player_mini_img.set_colorkey(BLACK)
 bullet_img = pygame.image.load(path.join(img_dir, 'laserRed16.png')).convert()
 missile_img = pygame.image.load(path.join(img_dir, 'missile.png')).convert_alpha()
-# meteor_img = pygame.image.load(path.join(img_dir, 'meteorBrown_med1.png')).convert()
+# meteor_img = pygame.image.load(path.join(img_dir, 'meteorBrown_med1.png')).convert() # al final no queria eso pero lo deje ahi
 meteor_images = []
 meteor_list = [
     'meteorBrown_big1.png',
@@ -367,7 +367,7 @@ meteor_list = [
 for image in meteor_list:
     meteor_images.append(pygame.image.load(path.join(img_dir, image)).convert())
 
-## meteor explosion
+## meteorito explosion
 explosion_anim = {}
 explosion_anim['lg'] = []
 explosion_anim['sm'] = []
@@ -376,19 +376,19 @@ for i in range(9):
     filename = 'regularExplosion0{}.png'.format(i)
     img = pygame.image.load(path.join(img_dir, filename)).convert()
     img.set_colorkey(BLACK)
-    ## resize the explosion
+    ## tamaño explosion
     img_lg = pygame.transform.scale(img, (75, 75))
     explosion_anim['lg'].append(img_lg)
     img_sm = pygame.transform.scale(img, (32, 32))
     explosion_anim['sm'].append(img_sm)
 
-    ## player explosion
+    ## player explosion / explocion del jugador
     filename = 'sonicExplosion0{}.png'.format(i)
     img = pygame.image.load(path.join(img_dir, filename)).convert()
     img.set_colorkey(BLACK)
     explosion_anim['player'].append(img)
 
-## load power ups
+## cargar poderes
 powerup_images = {}
 powerup_images['shield'] = pygame.image.load(path.join(img_dir, 'shield_gold.png')).convert()
 powerup_images['gun'] = pygame.image.load(path.join(img_dir, 'bolt_gold.png')).convert()
@@ -398,26 +398,26 @@ powerup_images['gun'] = pygame.image.load(path.join(img_dir, 'bolt_gold.png')).c
 
 
 ###################################################
-### Load all game sounds
+### cargamos los sonidos
 shooting_sound = pygame.mixer.Sound(path.join(sound_folder, 'pew.wav'))
 missile_sound = pygame.mixer.Sound(path.join(sound_folder, 'rocket.ogg'))
 expl_sounds = []
 for sound in ['expl3.wav', 'expl6.wav']:
     expl_sounds.append(pygame.mixer.Sound(path.join(sound_folder, sound)))
 ## main background music
-#pygame.mixer.music.load(path.join(sound_folder, 'tgfcoder-FrozenJam-SeamlessLoop.ogg'))
-pygame.mixer.music.set_volume(0.2)      ## simmered the sound down a little
+#pygame.mixer.music.load(path.join(sound_folder, 'tgfcoder-FrozenJam-SeamlessLoop.ogg')) #sonido ya no necesitado
+pygame.mixer.music.set_volume(0.2)      ## --
 
 player_die_sound = pygame.mixer.Sound(path.join(sound_folder, 'rumble1.ogg'))
 ###################################################
 
-## TODO: make the game music loop over again and again. play(loops=-1) is not working
+## TODOList : hacer que la musica siga sonando play(loops=-1) is not working
 # Error : 
-# TypeError: play() takes no keyword arguments
-#pygame.mixer.music.play()
+# TypeError: play() me rindo
+#pygame.mixer.music.play() mejor no
 
 #############################
-## Game loop
+## loop 
 running = True
 menu_display = True
 while running:
@@ -425,20 +425,20 @@ while running:
         main_menu()
         pygame.time.wait(3000)
 
-        #Stop menu music
+        #musica del menu que tiene que parar
         pygame.mixer.music.stop()
-        #Play the gameplay music
+        #Musica del gameplay, cuando ya estas dentro del juego
         pygame.mixer.music.load(path.join(sound_folder, 'tgfcoder-FrozenJam-SeamlessLoop.ogg'))
-        pygame.mixer.music.play(-1)     ## makes the gameplay sound in an endless loop
+        pygame.mixer.music.play(-1)     ## musica con loop para que no deje de sonar 
         
         menu_display = False
         
-        ## group all the sprites together for ease of update
+        ## gl lmfao, que me pasaba
         all_sprites = pygame.sprite.Group()
         player = Player()
         all_sprites.add(player)
 
-        ## spawn a group of mob
+        ## 3 am
         mobs = pygame.sprite.Group()
         for i in range(8):      ## 8 mobs
             # mob_element = Mob()
@@ -446,40 +446,40 @@ while running:
             # mobs.add(mob_element)
             newmob()
 
-        ## group for bullets
+        ## --
         bullets = pygame.sprite.Group()
         powerups = pygame.sprite.Group()
 
-        #### Score board variable
+        #### score board, 7:00 am
         score = 0
         
-    #1 Process input/events
-    clock.tick(FPS)     ## will make the loop run at the same speed all the time
-    for event in pygame.event.get():        # gets all the events which have occured till now and keeps tab of them.
-        ## listening for the the X button at the top
+    #1 procesa inputs 
+    clock.tick(FPS)     ## 
+    for event in pygame.event.get():     
+       
         if event.type == pygame.QUIT:
             running = False
 
-        ## Press ESC to exit game
+        ## Presiona esc para salir 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_ESCAPE:
                 running = False
-        # ## event for shooting the bullets
+        # ## evento
         # elif event.type == pygame.KEYDOWN:
         #     if event.key == pygame.K_SPACE:
-        #         player.shoot()      ## we have to define the shoot()  function
+        #         player.shoot()      ## tenemos que definir shoot() 
 
     #2 Update
-    all_sprites.update()
+    all_sprites.update() # 4:00 pm si, me toma mucho tiempo hacer esto
 
 
-    ## check if a bullet hit a mob
-    ## now we have a group of bullets and a group of mob
+    ## ve si la bala golpeo un metiorito
+   
     hits = pygame.sprite.groupcollide(mobs, bullets, True, True)
-    ## now as we delete the mob element when we hit one with a bullet, we need to respawn them again
-    ## as there will be no mob_elements left out 
+    
+    
     for hit in hits:
-        score += 50 - hit.radius         ## give different scores for hitting big and small metoers
+        score += 50 - hit.radius         
         random.choice(expl_sounds).play()
         # m = Mob()
         # all_sprites.add(m)
@@ -490,13 +490,13 @@ while running:
             pow = Pow(hit.rect.center)
             all_sprites.add(pow)
             powerups.add(pow)
-        newmob()        ## spawn a new mob
+        newmob()        ## spawneamos un mob
 
-    ## ^^ the above loop will create the amount of mob objects which were killed spawn again
+    ## why? perdon ando estupido son las 4:00 am 
     #########################
 
-    ## check if the player collides with the mob
-    hits = pygame.sprite.spritecollide(player, mobs, True, pygame.sprite.collide_circle)        ## gives back a list, True makes the mob element disappear
+    ## --
+    hits = pygame.sprite.spritecollide(player, mobs, True, pygame.sprite.collide_circle)    
     for hit in hits:
         player.shield -= hit.radius * 2
         expl = Explosion(hit.rect.center, 'sm')
@@ -506,12 +506,12 @@ while running:
             player_die_sound.play()
             death_explosion = Explosion(player.rect.center, 'player')
             all_sprites.add(death_explosion)
-            # running = False     ## GAME OVER 3:D
+            # running = False     ## perdiste ajajajaja :D
             player.hide()
             player.lives -= 1
             player.shield = 100
 
-    ## if the player hit a power up
+    ## tomar power up
     hits = pygame.sprite.spritecollide(player, powerups, True)
     for hit in hits:
         if hit.type == 'shield':
@@ -527,19 +527,19 @@ while running:
         # menu_display = True
         # pygame.display.update()
 
-    #3 Draw/render
+    #3 dibujar/ render 
     screen.fill(BLACK)
     ## dibujamos background
     screen.blit(background, background_rect)
 
     all_sprites.draw(screen)
-    draw_text(screen, str(score), 18, WIDTH / 2, 10)     ## 10px down from the screen
+    draw_text(screen, str(score), 18, WIDTH / 2, 10)     ## 10px screen
     draw_shield_bar(screen, 5, 5, player.shield)
 
-    # Draw lives
+    # dibujar vidas
     draw_lives(screen, WIDTH - 100, 5, player.lives, player_mini_img)
 
-    ##gracias dios, a termine
+    ##gracias dios, a termine, me tomo 1 mes y 16 dias o mas no recuerdo pero ya me estaba quedando calvo xdd
     pygame.display.flip()       
 
 pygame.quit()
