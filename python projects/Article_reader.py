@@ -1,6 +1,7 @@
 #pip install pyttsx3
 #pip install requests
 #pip install bs4
+#maded by Pablo :^
 import pyttsx3
 import requests
 from bs4 import BeautifulSoup
