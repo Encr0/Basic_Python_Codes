@@ -1,4 +1,4 @@
-#gets html code from any site 
+#gets html code from any site/ ur stupid if u think u going to get database and that stuff :u
 #obtiene el codigo html de cualquier sitio web
 #maded by Pablo :^
 
